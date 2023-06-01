@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("my menu"),(()=>{const o="my slider";console.log(o),console.log(o)})(),console.log("best slider"),console.log("Hello i am webpack watch")})();
