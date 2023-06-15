@@ -1,8 +1,10 @@
 const slider = () => {
     const sliderBlock = document.querySelector('.portfolio-content')
     const slides = document.querySelectorAll('.portfolio-item')
-    const dots = document.querySelectorAll('.dot')
     const timeInterval = 2000
+    const dotsContainer = document.createElement('div');
+    dotsContainer.classList.add('dots-container');
+    sliderBlock.appendChild(dotsContainer);
 
     let currentSlide = 0
     let interval
@@ -14,6 +16,14 @@ const slider = () => {
     const nextSlide = (elems, index, strClass) => {
         elems[index].classList.add(strClass)
     }
+
+    const createDots = () => {
+        slides.forEach(() => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dotsContainer.appendChild(dot);
+        });
+    };
 
     const autoSlide = () => {
         prevSlide(slides, currentSlide, 'portfolio-item-active')
@@ -84,6 +94,7 @@ const slider = () => {
     }, true)
 
     startSlide()
+    createDots()
 
 }
 
