@@ -1,36 +1,31 @@
+import { animate } from "./helpers";
+
 const modal = () => {
     const modalElement = document.querySelector('.popup');
     const buttons = document.querySelectorAll('.popup-btn');
+    const closeBtn = modalElement.querySelector('.popup-close');
 
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-            if (window.innerWidth >= 768) {
-                modalElement.style.display = 'block';
-                modalElement.style.opacity = 0;
+            modalElement.style.display = 'block'
+        })
+    })
 
-                modalElement.animate(
-                    [
-                        { opacity: 0 },
-                        { opacity: 1 }
-                    ],
-                    {
-                        duration: 500,
-                        easing: 'ease-in-out',
-                        fill: 'forwards'
-                    }
-                );
-            } else {
-                modalElement.style.display = 'block';
-                modalElement.style.opacity = 1;
+    closeBtn.addEventListener('click', () => {
+        modalElement.style.display = 'none'
+    })
+
+    setTimeout(() => {
+        animate({
+            duration: 1000,
+            timing(timeFraction) {
+                return timeFraction;
+            },
+            draw(progress) {
+                modalElement.style.opacity = progress
             }
         });
-    });
-
-    modalElement.addEventListener('click', (e) => {
-        if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
-            modalElement.style.display = 'none';
-        }
-    })
+    }, 1500)
 };
 
 export default modal;
