@@ -1,4 +1,4 @@
-import { animate } from "./helpers";
+import { slicer, animate } from "./helpers";
 
 const modal = () => {
     const modalElement = document.querySelector('.popup');
